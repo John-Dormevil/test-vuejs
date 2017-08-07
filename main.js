@@ -1,57 +1,42 @@
-Vue.component('tabs', {
-  template:
+Vue.component('coupon', {
+  /*
+  <slot></slot> balise call the content html inside the curent template,
+  need to be specified before set your own template
+  */
+  template: 
   `
   <div>
-    <div class="tabs">
-      <ul>
-        <li v-for="tab in tabs" :class= "{'is-active' : tab.isActive }">
-          <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class='tabs-details'>
+    <div class="child">
+      <p>The child component</p>
       <slot></slot>
+      <input placeholder="enter code" v-model="inputValue">
+      <button @click="go">Go</button>
+      <p>Your code is {{ inputValue }}</p>
     </div>
   </div>
   `,
-  data() {
-    return { 
-      tabs: []
-    }
-  },
-  created() {
-    this.tabs = this.$children;
+  data: () => {
+    return {
+      inputValue: ''
+    };
   },
   methods: {
-    selectTab(selectTab) {
-      this.tabs.forEach(tab => {
-        tab.isActive = tab.name == selectTab.name ? true : false;
-      });
-    }
-  }
-});
-
-Vue.component('tab', {
-  template: `<div v-show="isActive"><slot></slot></div>`,
-  data() {
-    return {
-      isActive: this.selected,
-      href: "#"+this.name.toLowerCase().replace(/ /g, '-')
-    }
-  },
-  props: {
-    name: {
-      type: String,
-      required: true,
-      default: 'title name'
-    },
-    selected: {
-      default: false
+    go() {
+      console.log('Input value is '+ this.inputValue);
+      this.$emit('emit-coupon', this.inputValue);
     }
   }
 });
 
 new Vue({
-  el: '#root'
+  el: '#root',
+  methods: {
+    greeter(args) {
+      this.code = args;
+    }
+  },
+  data() {
+    return {code: 0};
+  },
+  //template: "<div>go</div>" inject the template in the component and erase everything in.
 });
