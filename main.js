@@ -1,47 +1,32 @@
-window.Event = new Vue();
-
-Vue.component('coupon', {
+Vue.component('modal', {
   /*
   <slot></slot> balise call the content html inside the curent template,
   need to be specified before set your own template
   */
   template: 
-  `
-  <div>
-    <div class="child">
-      <p>The child component</p>
-      <slot></slot>
-      <input placeholder="enter code" v-model="inputValue">
-      <button @click="go">Go</button>
-      <p>Your code is {{ inputValue }}</p>
-    </div>
+  `<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">
+        <slot name="header"></slot>
+      </p>
+      <button class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      Temporary for noww
+    </section> 
+    <footer class="modal-card-foot">
+      <slot name="footer">
+        <a class="button is-success">Save changes</a>
+        <a class="button">Cancel</a>
+      </slot>
+    </footer>
   </div>
-  `,
-  data: () => {
-    return {
-      inputValue: ''
-    };
-  },
-  methods: {
-    go() {
-      console.log('Input value is '+ this.inputValue);
-      Event.$emit('emit-coupon', this.inputValue);
-    }
-  }
+</div>`
 });
 
 new Vue({
   el: '#root',
-  created () {
-    Event.$on('emit-coupon', this.greeter)
-  },
-  methods: {
-    greeter(args) {
-      this.code = args;
-    }
-  },
-  data() {
-    return {code: 0};
-  },
-  //template: "<div>go</div>" inject the template in the component and erase everything in.
+
 });
