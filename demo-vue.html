@@ -8,27 +8,27 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+  <style>
+  .parent { 
+    border-style: solid;
+    border-color: green
+  }
+  .child  { 
+    border-style: dotted;
+    border-color: lightgreen;
+    margin: 2em; 
+  }
+  </style>
 </head>
 
 <body>
-  <div id="root" class="container">
 
-    <tabs>
-      <tab name="About us" :selected="true">
-        <h1>Page info about us</h1>
-      </tab>
-      <tab name="Products">
-        <h1>Products item you can purchase</h1>
-      </tab>
-      <tab name="Store">
-        <h1>The store platform</h1>
-      </tab>
-      <tab name="Contact us">
-        <h1>Email and form with contact information</h1>
-      </tab>
-    </tabs>
-
+  <div id="root" class="container parent">
+    <div>The parent component recieve information througth child event {{ code }}</div>
+    <coupon>My coupon code</coupon>
+    <coupon>My coupon code</coupon>
   </div>
+
   <script type="text/javascript" src="https://unpkg.com/vue@2.4.2"></script>
   <script src="main.js"></script>
 </body>
