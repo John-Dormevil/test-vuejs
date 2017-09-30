@@ -7,27 +7,15 @@
   <title>demo-vuejs</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
 </head>
 
 <body>
   <div id="root" class="container">
-
-    <tabs>
-      <tab name="About us" :selected="true">
-        <h1>Page info about us</h1>
-      </tab>
-      <tab name="Products">
-        <h1>Products item you can purchase</h1>
-      </tab>
-      <tab name="Store">
-        <h1>The store platform</h1>
-      </tab>
-      <tab name="Contact us">
-        <h1>Email and form with contact information</h1>
-      </tab>
-    </tabs>
-
+    <ul>
+      <li v-for="name in names"> {{name}} </li> <!--or <li v-for="name in names" v-text="name"></li> -->
+      <input id="inputText" type="text" v-model="newName">
+      <button id="newUser" v-on:click="addName">Add user</button> <!-- or @:click="addName" -->
+    </ul>
   </div>
   <script type="text/javascript" src="https://unpkg.com/vue@2.4.2"></script>
   <script src="main.js"></script>
