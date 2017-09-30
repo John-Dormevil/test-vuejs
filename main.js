@@ -1,3 +1,8 @@
+Vue.component('task', {
+  template: '<div>Un composant personnalisé !</div>'
+});
+
+
 var app = new Vue({
   el: '#root',
   data:{
