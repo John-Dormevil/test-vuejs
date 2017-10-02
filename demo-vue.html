@@ -13,11 +13,10 @@
 <body>
   <div id="root" class="container">
     <ul>
+      <modal body="Sit ut adipisicing et et ullamco dolore proident nulla commodo sint." v-if="visible"></modal>
       
-      <message title="hello" body="world"></message>
 
-      <message title="Correction" body="Attention veuillez lire ceci attentivement"></message>
-      
+      <button type="button" @click="showModal">Toggle modal</button>
     </ul>
   </div>
   <script type="text/javascript" src="https://unpkg.com/vue@2.4.2"></script>

@@ -1,31 +1,37 @@
-Vue.component('message', {
-  props: ['title', 'body'],
+Vue.component('modal', {
+  props: ['body'],
   template: `
-    <article class="message" v-show="isVisible">
-      <div class="message-header">
-        {{ title }}
-
-        <button @click="hideModal">X</button>
-      </div>
-      <div class="message-body">
-        {{  body  }}
-      </div>
-    </article>
+    <div class="modal" :class="isVisible" >
+      <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            {{ body }}
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" @click="hideModal"></button>
+    </div>
   `,
   methods: {
     hideModal: function () {
-      this.isVisible = false;
+      this.isVisible = '';
     }
   },
   data: function () {
     return {
-      isVisible: true
+      isVisible: 'is-active'
     };
-    
   }
 });
 
 
 var app = new Vue({
-  el: '#root'
+  el: '#root',
+  data: {
+    visible: false
+  },
+  methods: {
+    showModal: function () {
+      this.visible = true;
+    }
+  }
 });
