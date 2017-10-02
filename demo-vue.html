@@ -13,9 +13,9 @@
 <body>
   <div id="root" class="container">
     <ul>
-      <modal body="Sit ut adipisicing et et ullamco dolore proident nulla commodo sint." v-if="visible"></modal>
-      
-
+      <modal v-if="visible" @close="closeModal">
+        <p slot="body"> Sit ut adipisicing et et ullamco dolore proident nulla commodo sint.</p>
+      </modal>
       <button type="button" @click="showModal">Toggle modal</button>
     </ul>
   </div>

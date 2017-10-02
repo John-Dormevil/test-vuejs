@@ -1,26 +1,16 @@
 Vue.component('modal', {
   props: ['body'],
   template: `
-    <div class="modal" :class="isVisible" >
+    <div class="modal is-active">
       <div class="modal-background"></div>
         <div class="modal-content">
           <div class="box">
-            {{ body }}
+            <slot name="body"></slot>
           </div>
         </div>
-        <button class="modal-close is-large" aria-label="close" @click="hideModal"></button>
+        <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
     </div>
-  `,
-  methods: {
-    hideModal: function () {
-      this.isVisible = '';
-    }
-  },
-  data: function () {
-    return {
-      isVisible: 'is-active'
-    };
-  }
+  `
 });
 
 
@@ -32,6 +22,9 @@ var app = new Vue({
   methods: {
     showModal: function () {
       this.visible = true;
+    },
+    closeModal: function () {
+      this.visible = false;
     }
   }
 });
