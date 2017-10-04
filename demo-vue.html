@@ -12,12 +12,11 @@
 
 <body>
   <div id="root" class="container">
-    <ul>
-      <modal v-if="visible" @close="closeModal">
-        <p slot="body"> Sit ut adipisicing et et ullamco dolore proident nulla commodo sint.</p>
-      </modal>
-      <button type="button" @click="showModal">Toggle modal</button>
-    </ul>
+    <tabs>
+      <tab name="Picture" selected="true"><h1>Pariatur irure aliqua deserunt sunt.</h1></tab>
+      <tab name="Movie"><h1>Amet cillum elit id Lorem fugiat esse.</h1></tab>
+      <tab name="About US"><h1>Amet cillum elit id Lorem fugiat esse.</h1></tab>
+    </tabs>
   </div>
   <script type="text/javascript" src="https://unpkg.com/vue@2.4.2"></script>
   <script src="main.js"></script>
